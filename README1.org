@@ -1,0 +1,44 @@
+This archive is actually an official fix for XFree86/OS2 which corrects
+a certain bug in the device driver required for XFree86.
+
+For fun, and as a bonus, I added one more feature to this driver which
+could make it quite worthwhile for people who do not own or use XFree86/OS2
+(info is at http://borneo.gmd.de/~veit/os2/xf86os2.html, BTW).
+
+This feature has been named "death", in relation to the various programs 
+under OS/2 that attempt to kill processes (kill, killem, killit, pmkill, and
+others).
+
+To take advantage of this feature, you must do the following things:
+
+0. The fix is structured in a way that it fits into the XFree86/OS2 environment.
+   However, to only use the "death" feature, you don't need to install
+   any parts of XFree86 except the enclosed device driver.
+   Users of XFree86 just unpack this archive in the root directory of the
+   drive where the \XFree86 tree is located and reboot.
+
+1. The device driver is located in this fix in \XFree86\lib\xf86sup.sys.
+   Install it somewhere (e.g. in \os2\boot on your disk) and add a line
+
+	DEVICE=\pathtothedriver\XF86SUP.SYS
+
+   accordingly to your config.sys file and reboot.
+
+2. \XFree86\src\death contains the sample "death.exe" process and a 
+   "hard-to-kill" example process named pig.exe for testing the feature.
+   It also contains the source code of these processes and an API to
+   integrate the function in your own code. Consult the README file in
+   this directory.
+
+Have fun
+
+Holger Veit
+
+-- 
+         Dr.-Ing. Holger Veit             | INTERNET: Holger.Veit@gmd.de
+|  |   / GMD - German National Research   | Phone: (+49) 2241 14 2448 or 2039
+|__|  /  Center for Information Technology| Fax:   (+49) 2241 14 2242
+|  | /   Schloss Birlinghoven             |  NEW Beta XFree86/OS2 3.1.2E
+|  |/    D-53754 Sankt Augustin, Germany  |     at ftp.xfree86.org in
+         WWW: http://borneo.gmd.de/~veit/ |    /pub/XFree86/beta/OS2
+
